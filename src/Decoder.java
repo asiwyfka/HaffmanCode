@@ -18,12 +18,10 @@ public class Decoder {
     }
 
 
-    public String deCodeDecimalStringToBinaryString(String fileName, Coder coder) {
-        try {
-            Scanner scanner = new Scanner(new File(fileName));
+    public String deCodeDecimalStringToBinaryString(Data data) {
 
-            // Читаем строку из файла
-            String line = scanner.nextLine();
+            // Читаем закодированную строку
+            String line = data.getCodedText();
 
             // Разделяем строку на отдельные цифры по пробелам и сохраняем в массив
             String[] digitsArray = line.split(" ");
@@ -35,7 +33,7 @@ public class Decoder {
             for (int i = 0; i < digitsArray.length; i++) {
                 if ((i + 1 == digitsArray.length)&(digitsArray.length!=1)) {
                     int decimal = Integer.parseInt(digitsArray[i]);
-                    String binary = coder.getLastBinaryValueInCoder();
+                    String binary = data.getLastBinaryValueInCoder();
                     System.out.println("Десятичное: " + decimal + ", двоичное: " + binary);
                     decodedString.append(binary);
                     break;
@@ -45,11 +43,7 @@ public class Decoder {
                 System.out.println("Десятичное: " + decimal + ", двоичное: " + binary);
                 decodedString.append(binary);
             }
-            scanner.close();
-        } catch (FileNotFoundException e) {
-            System.out.println("Файл не найден: " + fileName);
-            e.printStackTrace();
-        }
+
         return decodedString.toString();
     }
 
