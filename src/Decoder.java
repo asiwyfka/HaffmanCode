@@ -31,7 +31,7 @@ public class Decoder {
             System.out.println("Длина массива " + digitsArray.length);
             System.out.println("Двоичные представления цифр из файла:");
             for (int i = 0; i < digitsArray.length; i++) {
-                if ((i + 1 == digitsArray.length)&(digitsArray.length!=1)) {
+                if ((i + 1 == digitsArray.length)) {
                     int decimal = Integer.parseInt(digitsArray[i]);
                     String binary = data.getLastBinaryValueInCoder();
                     System.out.println("Десятичное: " + decimal + ", двоичное: " + binary);
